@@ -6,7 +6,7 @@ export class Movie {
 
   async getFetch() {
     try { 
-      let movie = await fetch(`http://www.omdbapi.com/?apikey=6a4013f3&t=${this.moviename}`, {
+      let movie = await fetch(`http://www.omdbapi.com/?apikey=${process.env.APIKEY}&t=${this.moviename}`, {
       }); 
       let jsonifiedResponse;
       if (movie.ok && movie.status == 200) {
@@ -14,8 +14,6 @@ export class Movie {
       } else {
         jsonifiedResponse = false;
       }
-      console.log(jsonifiedResponse);
-
       this.jsonifiedResponse = jsonifiedResponse;
     } catch(error) {
       console.log('error');
